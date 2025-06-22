@@ -123,6 +123,7 @@ cases:
           children:
             - type: container
               kind: figure
+              width: 49%
               children:
                 - type: image
                   url: figures/one.jpg
@@ -134,6 +135,7 @@ cases:
                           value: This is Fig 1a
             - type: container
               kind: figure
+              width: 49%
               align: center
               children:
                 - type: image
