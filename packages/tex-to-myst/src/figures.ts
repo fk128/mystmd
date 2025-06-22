@@ -58,7 +58,7 @@ const FIGURE_HANDLERS: Record<string, Handler> = {
 
     // Convert width to percentage if present
     if (params.width) {
-      if (typeof params.width === 'number'  && Number.isFinite(params.width)) {
+      if (typeof params.width === 'number' && Number.isFinite(params.width)) {
         params.width = `${Math.round(params.width * 100)}%`;
       } else {
         delete params.width; // If width is a string, we don't know what it is, so we ignore it

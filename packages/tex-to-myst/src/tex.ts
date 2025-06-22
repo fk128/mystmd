@@ -1,5 +1,7 @@
 import type { GenericNode, GenericParent } from 'myst-common';
 import { processLatexToAstViaUnified } from '@unified-latex/unified-latex';
+import { deleteComments } from '@unified-latex/unified-latex-util-comments';
+import { unifiedLatexFromString } from '@unified-latex/unified-latex-util-parse';
 import { getArguments, isSpecialSymbol } from './utils.js';
 
 function parseArgument(node: GenericNode, next: GenericNode): boolean {
@@ -261,8 +263,15 @@ function walkLatex(node: GenericNode): GenericNode | GenericParent | undefined {
 }
 
 export function parseLatex(value: string): GenericParent {
-  const file = processLatexToAstViaUnified().processSync({ value });
+  const file = processLatexToAstViaUnified()
+    .use(unifiedLatexFromString, {
+      macros: { subfile: { signature: 'm' } },
+    })
+    .processSync({ value });
   const tree = file.result as GenericParent;
+
+  deleteComments(tree);
+
   const transformed = walkLatex(tree) as GenericParent;
   return transformed;
 }

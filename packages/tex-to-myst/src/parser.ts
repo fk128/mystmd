@@ -27,6 +27,7 @@ import { SIUNITX_HANDLERS } from './siunitx.js';
 import { CHEM_HANDLERS } from './chem.js';
 import { ALGORITHM_HANDLERS } from './algorithms.js';
 import { QUOTE_HANDLERS } from './quotes.js';
+import { CUSTOM_HANDLERS } from './custom.js';
 
 export const DEFAULT_HANDLERS: Record<string, Handler> = {
   ...BASIC_TEXT_HANDLERS,
@@ -49,6 +50,7 @@ export const DEFAULT_HANDLERS: Record<string, Handler> = {
   ...SIUNITX_HANDLERS,
   ...CHEM_HANDLERS,
   ...ALGORITHM_HANDLERS,
+  ...CUSTOM_HANDLERS,
 };
 
 // This currently is needed as we don't support affiliations in the frontmatter.
