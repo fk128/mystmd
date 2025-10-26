@@ -1,5 +1,13 @@
 # myst-transforms
 
+## 1.3.41
+
+### Patch Changes
+
+- aab5f02: Handle undefined URLs in formatting link text
+- Updated dependencies [cd8ee79]
+  - myst-to-html@1.6.0
+
 ## 1.3.40
 
 ### Patch Changes
