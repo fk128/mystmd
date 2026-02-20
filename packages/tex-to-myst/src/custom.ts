@@ -1,8 +1,6 @@
 import { getArguments, originalValue, texToText } from './utils.js';
 import type { GenericNode } from 'myst-common';
 import type { Handler, ITexParser } from './types.js';
-import fs from 'fs';
-import crypto from 'crypto';
 import { mystParse } from 'myst-parser';
 import { gridDirectives } from 'myst-ext-grid';
 import { proofDirective } from 'myst-ext-proof';
@@ -19,12 +17,6 @@ export const CUSTOM_HANDLERS: Record<string, Handler> = {
       .replace(/\\begin\{mystmd\}[\r\n]*/i, '')
       .replace(/\\end\{mystmd\}[\r\n]*/i, '');
     content = content.trim().replace(/^[ \t]+/gm, '');
-
-    // Generate a unique hash for the content
-    // const hash = crypto.createHash('md5').update(content).digest('hex');
-    // const tempFilePath = `/tmp/mystmd_temp_${hash}.md`;
-    // fs.writeFileSync(tempFilePath, content);
-    // state.addLeaf('include', { file: tempFilePath });
 
     const parsed = mystParse(content, {
       markdownit: { linkify: true },
